@@ -57,9 +57,12 @@
                 sessionFactory.setDataSource(dataSource());  
                 sessionFactory.setPackagesToScan(ENTITYMANAGER_PACKAGES_TO_SCAN);  
                 Properties hibernateProperties = new Properties();  
+                hibernateProperties.setProperty(
+                        "hibernate.jdbc.lob.non_contextual_creation", "true");
                 hibernateProperties.put("hibernate.dialect", HIBERNATE_DIALECT);  
                 hibernateProperties.put("hibernate.show_sql", HIBERNATE_SHOW_SQL);  
-                hibernateProperties.put("hibernate.hbm2ddl.auto", HIBERNATE_HBM2DDL_AUTO);  
+                hibernateProperties.put("hibernate.hbm2ddl.auto",  HIBERNATE_HBM2DDL_AUTO);  
+                
                 sessionFactory.setHibernateProperties(hibernateProperties);  
                 return sessionFactory;  
             }  
